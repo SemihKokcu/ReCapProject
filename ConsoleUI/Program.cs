@@ -13,10 +13,12 @@ namespace ConsoleUI
             //CarTest();
             //GenelTest();
             CarManager carManager = new CarManager(new EfCarDal());
+            ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in colorManager.GetAll().Data)
             {
-                Console.WriteLine(car.CarName +"/"+car.BrandName+"/"+car.ColorName+"/"+car.DailyPrice);
+                Console.WriteLine(car.Name);
+               // Console.WriteLine(car.CarName +"/"+car.BrandName+"/"+car.ColorName+"/"+car.DailyPrice);
             }
 
         }
@@ -34,11 +36,11 @@ namespace ConsoleUI
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             //brandManager.Add(brand);
 
-            foreach (var car in brandManager.GetAll())
+            foreach (var car in brandManager.GetAll().Data)
             {
                 Console.WriteLine(car.Name);
             }
-            Console.WriteLine(colorManager.GetColor(3).Name);
+            //Console.WriteLine(colorManager.GetColor(3).Name);
         }
 
         private static void CarTest()
@@ -46,7 +48,7 @@ namespace ConsoleUI
             //Car car1 = new Car { Id = 3, Name = "Hyundai", BrandId = 2, ColorId = 2, ModelYear = 2000, DailyPrice = 300, Description = "temiz" };
             CarManager carManager = new CarManager(new EfCarDal());
             //carManager.Add(car1);
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.Name);
             }
