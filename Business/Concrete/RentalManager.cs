@@ -21,8 +21,13 @@ namespace Business.Concrete
         }
         public IResult Add(Rental rental)
         {
+            var result = _rentalDal.Get(r=>r.CarId == rental.CarId && r.ReturnDate == null);
+            if (result !=null)
+            {
+                return new ErrorResult("Hatalı araç kiralana");
+            }
             _rentalDal.Add(rental);
-            return new SuccessResult();
+            return new SuccessResult("Araç kiralandı");
         }
 
         public IDataResult<List<Rental>> AllRentalCars()
@@ -38,7 +43,7 @@ namespace Business.Concrete
 
         public IDataResult<Rental> Get(int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(r=>r.RentalID==id));
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r=>r.Id==id));
         }
 
         public IDataResult<List<RentalDetailDto>> GetRentalCarDetails()
@@ -46,12 +51,12 @@ namespace Business.Concrete
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetail());
         }
 
-        public IDataResult<List<Rental>> NotRentedCars()
+        public IDataResult<List<Rental>> GetNotRentedCars()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r=>r.ReturnDate==null));
         }
 
-        public IDataResult<List<Rental>> RentedCars()
+        public IDataResult<List<Rental>> GetRentedCars()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.ReturnDate != null));
 

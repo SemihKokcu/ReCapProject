@@ -12,15 +12,49 @@ namespace ConsoleUI
         {
             //CarTest();
             //GenelTest();
+            //Test();
+            //usercustomertest();
+
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            //Rental rental = new Rental { CarID = 1, CustomerID = 1, RentalID = 1, RentDate = new DateTime(2022, 09, 29), ReturnDate = new DateTime(2022, 09, 30) };
+            //rentalManager.Add(rental);
+
+            foreach (var item in rentalManager.AllRentalCars().Data)
+            {
+                Console.WriteLine(item.CarId);
+            }
+        }
+
+        private static void usercustomertest()
+        {
+            UserManager userManager = new(new EfUserDal());
+            //User user = new User { FirstName = "Semih", LastName = "Kökçü", Email="semihkkc@gmail.com",Password="12345",UserID=1};
+            //userManager.Add(user);
+
+            CustomerManager customerManager = new(new EfCustomerDal());
+            //Customer customer = new Customer { UserId=1,CustomerId=1,CompanyName="Semih's Cars"};
+            //customerManager.Add(customer);
+
+            //foreach (var us in userManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(us.FirstName);
+            //}
+            //foreach (var cu in customerManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(cu.UserId+"/"+cu.CompanyName);
+            //}
+        }
+
+        private static void Test()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
             foreach (var car in colorManager.GetAll().Data)
             {
                 Console.WriteLine(car.Name);
-               // Console.WriteLine(car.CarName +"/"+car.BrandName+"/"+car.ColorName+"/"+car.DailyPrice);
+                // Console.WriteLine(car.CarName +"/"+car.BrandName+"/"+car.ColorName+"/"+car.DailyPrice);
             }
-
         }
 
         private static void GenelTest()
