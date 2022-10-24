@@ -27,7 +27,7 @@ namespace ConsoleUI
 
         private static void usercustomertest()
         {
-            UserManager userManager = new(new EfUserDal());
+            //UserManager userManager = new(new EfUserDal());
             //User user = new User { FirstName = "Semih", LastName = "Kökçü", Email="semihkkc@gmail.com",Password="12345",UserID=1};
             //userManager.Add(user);
 
@@ -89,6 +89,6 @@ namespace ConsoleUI
         }
     }
 
-   
-    
+
+
 }

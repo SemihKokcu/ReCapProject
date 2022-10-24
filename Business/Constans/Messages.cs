@@ -59,5 +59,6 @@ namespace Business.Constans
         public static string RentalListedByCarDetails = "Rental Listed By Car Details";
         public static string RentalListedByNotRentedCars = "Rental listed By Not Rented Cars";
         public static string RentalListedByRentedCars = " Rental listed By Rented Cars";
+        public static string AuthorizationDenied = " Tetki hatası";
     }
 }
